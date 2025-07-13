@@ -84,4 +84,16 @@ streamlit run app/main.py
 - Keeps history context for improved Q&A
 - Avoids hallucinations by limiting prompts to ~4000 chars and citing source
 
+
+## API Testing with Postman
+
+To test the API endpoints used by the Smart Assistant:
+
+1. Download or clone this repo.
+2. Import the Postman collection located at `Postman/postmanfile.json` into Postman:
+   - Open Postman
+   - Click `Import`
+   - Select the `postmanfile.json` file
+3. Use the imported requests to test your API or backend.
+
 ---
