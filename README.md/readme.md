@@ -57,3 +57,34 @@ pip install -r requirements.txt
 # Run the Streamlit app
 streamlit run app/main.py
 
+
+---
+
+## 🧱 Architecture & Reasoning Flow
+
+### 🗂️ Modules Overview
+
+- **app/main.py** – Streamlit frontend for document upload, Q&A interaction, and challenge mode
+- **document_parser.py** – Extracts text from uploaded PDF or TXT documents
+- **summarizer.py** – Sends text to Gemini API and returns a ≤150-word summary
+- **qa_engine.py** – Handles:
+  - Context-aware question answering (`ask_question`)
+  - Logic-based question generation (`generate_challenge_questions`)
+  - User answer evaluation with snippet highlighting (`evaluate_challenge_answer`)
+
+### 🔄 Flow of Interaction
+
+1. **User uploads a document**  
+2. **Text is extracted and summarized**
+3. **User chooses one of two modes:**
+   - **Ask Anything**: User can ask any question. The assistant remembers context for follow-ups.
+   - **Challenge Me**: App auto-generates 3 reasoning-based questions. User answers, and AI evaluates them with explanation and supporting snippet.
+4. **Responses are always grounded in the uploaded document**
+
+### 🧠 AI Reasoning
+
+- Uses Google Gemini (`gemini-1.5-flash-latest`) for all AI tasks
+- Keeps history context for improved Q&A
+- Avoids hallucinations by limiting prompts to ~4000 chars and citing source
+
+---
