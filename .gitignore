@@ -1,0 +1,14 @@
+# Ignore environment and config
+.env
+__pycache__/
+*.pyc
+
+# Ignore virtual environments
+.venv/
+venv/
+
+# Ignore Streamlit config
+.streamlit/
+
+# Ignore VS Code config
+.vscode/
