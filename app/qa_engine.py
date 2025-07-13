@@ -1,11 +1,10 @@
 import google.generativeai as genai
-import os
-from dotenv import load_dotenv
+import streamlit as st
 
-load_dotenv()
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-model = genai.GenerativeModel("gemini-1.5-flash-latest")
+genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
+
+model = genai.GenerativeModel("gemini-2.5-flash-lite-preview-06-17")
 
 # --- Ask Anything with Memory Handling ---
 def ask_question(document_text, user_question, conversation_history=None):

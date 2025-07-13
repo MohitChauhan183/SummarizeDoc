@@ -1,9 +1,8 @@
 import google.generativeai as genai
-import os
-from dotenv import load_dotenv
+import streamlit as st
 
-load_dotenv()
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+
+genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
 def summarize_text(text):
     if not text.strip():
@@ -15,6 +14,6 @@ def summarize_text(text):
         f"{text[:4000]}"
     )
 
-    model = genai.GenerativeModel("gemini-1.5-flash-latest")
+    model = genai.GenerativeModel("gemini-2.5-flash-lite-preview-06-17")
     response = model.generate_content(prompt)
     return response.text.strip()
